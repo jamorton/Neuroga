@@ -2,9 +2,18 @@
 #define __COMMON_H__
 
 #include <cmath>
-#include "common.h"
+#include <cstdlib>
+#include <vector>
+#include <ctime>
+#include "config.h"
 
 typedef float Number;
+typedef unsigned int uint;
+
+static void initRandom()
+{
+	srand(time(NULL));
+}
 
 //returns a random integer between x and y
 inline int randomInt(int x,int y)
@@ -13,16 +22,14 @@ inline int randomInt(int x,int y)
 }
 
 //returns a random float between zero and 1
-inline Number random()
+inline Number randomNumber()
 {
 	return rand() / (RAND_MAX + 1.0);
 }
 
 inline bool randomBool()
 {
-	if (rand() & 1)
-		return true;
-	return false;
+	return rand() & 1;
 }
 
 #endif

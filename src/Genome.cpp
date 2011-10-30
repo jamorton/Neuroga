@@ -1,23 +1,19 @@
 
 #include "Genome.h"
 
-#define DNA_RANDFUNC() (random())
+#define DNA_RANDFUNC() (randomNumber())
 #define dlen CONFIG_DNA_LEN
 
-Genome::Genome() : m_dna(DLEN, 0.0)
+Genome::Genome() : m_dna(dlen)
 {
-
+	m_dna.resize(dlen);
+	for (auto & val : m_dna)
+		val = DNA_RANDFUNC();
 }
 
-Genome::randomize()
+void Genome::mutate()
 {
-	for (int i = 0; i < DLEN; i++)
-		m_dna[i] = DNA_RANDFUNC();	
-}
-
-Genome::mutate()
-{
-	for (int i = 0; i < DLEN; i++)
-		if (random() < CONFIG_MUTATE_RATE)
-			m_dna[i] = DNA_RANDFUNC();
+	for (auto & val : m_dna)
+		if (randomNumber() < CONFIG_MUTATE_RATE)
+			val = DNA_RANDFUNC();
 }
