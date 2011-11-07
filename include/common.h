@@ -32,4 +32,5 @@ inline bool randomBool()
 	return rand() & 1;
 }
 
+
 #endif

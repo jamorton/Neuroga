@@ -15,14 +15,17 @@ class Individual
 public:
 
 	Individual(Genome * myGenome);
+	~Individual();
+
+	const std::vector<Connection>& connections() const { return m_connections; }
 
 private:
 
 	Genome * m_genome;
 
-	std::vector<Connection> connections;
-	std::vector<Neuron> neurons;
-	std::vector<Organ> organs;
+	std::vector<Connection> m_connections;
+	std::vector<Neuron *> m_neurons;
+	std::vector<Organ *> m_organs;
 
 };
 
